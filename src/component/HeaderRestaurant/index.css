@@ -1,0 +1,15 @@
+.headerRestaurant {
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+.leftColumn {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#photoHeader {
+  width: 20%;
+  height: 100px;
+}

@@ -1,0 +1,28 @@
+.mealContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.meal {
+  width: 35ch;
+  display: flex;
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* justify-content: space-around; */
+  /* border: lawngreen solid 4px; */
+}
+/* .leftColumnMeals {
+  display: flex;
+
+  justify-content: space-between;
+} */
+.priceAndPopular {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#photoMeal {
+  height: 100px;
+}

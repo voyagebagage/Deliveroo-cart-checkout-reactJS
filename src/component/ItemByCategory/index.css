@@ -1,0 +1,6 @@
+.catName {
+  display: flex;
+  font-size: x-large;
+  font-weight: bolder;
+  flex-wrap: wrap;
+}

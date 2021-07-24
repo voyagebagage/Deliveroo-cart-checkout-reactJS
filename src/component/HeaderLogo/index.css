@@ -1,0 +1,9 @@
+.logoHeader {
+  height: 43px;
+}
+.headerBox {
+  height: 60px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(143, 161, 161, 0.295);
+}
