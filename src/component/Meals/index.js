@@ -12,7 +12,7 @@ export default function Meals({ meals }) {
     <div
       className="mealContainer wrapper"
       style={{
-        borderWidth: 5,
+        borderWidth: 2,
         borderStyle: "solid",
         borderColor: "green",
       }}
@@ -21,13 +21,13 @@ export default function Meals({ meals }) {
         <div
           className="meal"
           key={meal.id}
-          style={{
-            borderWidth: 3,
-            borderStyle: "solid",
-            borderColor: "crimson",
-          }}
+          // style={{
+          //   borderWidth: 3,
+          //   borderStyle: "solid",
+          //   borderColor: "crimson",
+          // }}
         >
-          <div>
+          <div className={meal.picture ? "leftColumnMeals" : null}>
             <h3 className="mealTitle">{meal.title}</h3>
             <p className="mealDescription">{meal.description}</p>
             <div className="priceAndPopular">
@@ -44,15 +44,8 @@ export default function Meals({ meals }) {
             </div>
           </div>
           {meal.picture && (
-            <div
-              className="photoWrapper"
-              style={{
-                borderWidth: 0.5,
-                borderStyle: "solid",
-                borderColor: "mediumorchid",
-              }}
-            >
-              <img id="photoMeal" src={meal.picture} alt={""} />
+            <div className="photoWrapper">
+              <img id="photoMeal" src={meal.picture} alt={"meal"} />
             </div>
           )}
         </div>

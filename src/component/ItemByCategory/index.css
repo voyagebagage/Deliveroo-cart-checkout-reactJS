@@ -4,6 +4,7 @@
   font-weight: bolder;
   flex-wrap: wrap;
   color: #2e3333;
+  padding: 20px 0;
 }
 .itemByCategories {
   background-color: #f3f5f5;

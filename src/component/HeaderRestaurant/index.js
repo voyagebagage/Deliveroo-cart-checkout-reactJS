@@ -13,23 +13,14 @@ export default function HeaderRestaurant({ restaurant }) {
     >
       <div className="leftColumn">
         <h1 className="nameRestaurant">{restaurant.name}</h1>
-        <div
-          className="descriptionRestaurant"
-          style={{
-            borderWidth: 2,
-            borderStyle: "solid",
-            borderColor: "cyan",
-          }}
-        >
-          {restaurant.description}
-        </div>
+        <div className="descriptionRestaurant">{restaurant.description}</div>
       </div>
       <div
-        style={{
-          borderWidth: 2,
-          borderStyle: "solid",
-          borderColor: "purple",
-        }}
+      // style={{
+      //   borderWidth: 2,
+      //   borderStyle: "solid",
+      //   borderColor: "purple",
+      // }}
       >
         <img id="photoHeader" src={restaurant.picture} alt={"res-header"} />
       </div>
