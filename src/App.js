@@ -1,6 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import HeaderLogo from "./component/HeaderLogo";
 import HeaderRestaurant from "./component/HeaderRestaurant";
 import ItemByCategory from "./component/ItemByCategory";
