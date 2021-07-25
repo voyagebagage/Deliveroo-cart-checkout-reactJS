@@ -3,12 +3,36 @@ import "./index.css";
 
 export default function HeaderRestaurant({ restaurant }) {
   return (
-    <div className="headerRestaurant">
+    <div
+      className="headerRestaurant wrapper"
+      style={{
+        borderWidth: 2,
+        borderStyle: "solid",
+        borderColor: "pink",
+      }}
+    >
       <div className="leftColumn">
-        <div>{restaurant.name}</div>
-        <div>{restaurant.description}</div>
+        <h1 className="nameRestaurant">{restaurant.name}</h1>
+        <div
+          className="descriptionRestaurant"
+          style={{
+            borderWidth: 2,
+            borderStyle: "solid",
+            borderColor: "cyan",
+          }}
+        >
+          {restaurant.description}
+        </div>
       </div>
-      <img id="photoHeader" src={restaurant.picture} alt={"res-header"} />
+      <div
+        style={{
+          borderWidth: 2,
+          borderStyle: "solid",
+          borderColor: "purple",
+        }}
+      >
+        <img id="photoHeader" src={restaurant.picture} alt={"res-header"} />
+      </div>
     </div>
   );
 }

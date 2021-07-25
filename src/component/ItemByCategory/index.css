@@ -3,4 +3,13 @@
   font-size: x-large;
   font-weight: bolder;
   flex-wrap: wrap;
+  color: #2e3333;
+}
+.itemByCategories {
+  background-color: #f3f5f5;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 96vw;
 }

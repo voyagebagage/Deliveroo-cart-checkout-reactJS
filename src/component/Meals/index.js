@@ -1,12 +1,16 @@
 import React from "react";
 import "./index.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+library.add(faStar);
 
 export default function Meals({ meals }) {
   console.log(meals);
 
   return (
     <div
-      className="mealContainer"
+      className="mealContainer wrapper"
       style={{
         borderWidth: 5,
         borderStyle: "solid",
@@ -24,16 +28,33 @@ export default function Meals({ meals }) {
           }}
         >
           <div>
-            <div>{meal.title}</div>
-            <div>{meal.description}</div>
+            <h3 className="mealTitle">{meal.title}</h3>
+            <p className="mealDescription">{meal.description}</p>
             <div className="priceAndPopular">
-              <div>{meal.price}</div>
-              {meal.popular && <div>TRUE</div>}
+              <div>{meal.price} €</div>
+              {meal.popular && (
+                <div>
+                  <FontAwesomeIcon
+                    icon="star"
+                    style={{ marginLeft: 16, color: "orange", height: "75%" }}
+                  />
+                  <span>Populaire</span>
+                </div>
+              )}
             </div>
           </div>
-          <div>
-            <img id="photoMeal" src={meal.picture} alt={"meal"} />
-          </div>
+          {meal.picture && (
+            <div
+              className="photoWrapper"
+              style={{
+                borderWidth: 0.5,
+                borderStyle: "solid",
+                borderColor: "mediumorchid",
+              }}
+            >
+              <img id="photoMeal" src={meal.picture} alt={""} />
+            </div>
+          )}
         </div>
       ))}
     </div>

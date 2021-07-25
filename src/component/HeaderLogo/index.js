@@ -6,11 +6,11 @@ import "./index.css";
 export default function HeaderLogo() {
   return (
     <div
-      className="headerBox"
+      className="headerBox wrapper"
       // style={{ borderColor: "blue", borderWidth: 10, border: "solid" }}
     >
       <img
-        className="logoHeader"
+        id="logoHeader"
         src="https://consumer-component-library.roocdn.com/22.1.1/static/images/logo-teal.svg"
         alt="logo"
       />

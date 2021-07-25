@@ -1,15 +1,33 @@
 .headerRestaurant {
+  /* background-color: "white"; */
+  /* width: inherit; */
   height: 300px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
+/* .wrapper {
+  margin: 0;
+  /* max-width: 1200px; */
+/* width: 96vw; */
+/* } */
 .leftColumn {
-  width: 80%;
+  /* width: 80%; */
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+}
+.nameRestaurant {
+  /* font-family: */
+  font-size: xx-large;
+  font-weight: 600;
+}
+.descriptionRestaurant {
+  font-size: larger;
+  color: #868a8a;
 }
 #photoHeader {
-  width: 20%;
-  height: 100px;
+  /* width: 20%; */
+  height: 200px;
+  border-radius: 7px;
 }

@@ -1,7 +1,9 @@
-.logoHeader {
+#logoHeader {
   height: 43px;
 }
 .headerBox {
+  display: flex;
+  align-items: center;
   height: 60px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
