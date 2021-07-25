@@ -15,6 +15,10 @@
   margin: 0 20px 25px 0;
   /* width: 35ch; */
 }
+.meal:hover {
+  box-shadow: 1px 5px 15px 5px rgba(128, 128, 128, 0.219);
+  cursor: pointer;
+}
 .leftColumnMeals {
   display: flex;
   flex-direction: column;

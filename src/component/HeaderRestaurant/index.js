@@ -5,11 +5,11 @@ export default function HeaderRestaurant({ restaurant }) {
   return (
     <div
       className="headerRestaurant wrapper"
-      style={{
-        borderWidth: 2,
-        borderStyle: "solid",
-        borderColor: "pink",
-      }}
+      // style={{
+      //   borderWidth: 2,
+      //   borderStyle: "solid",
+      //   borderColor: "pink",
+      // }}
     >
       <div className="leftColumn">
         <h1 className="nameRestaurant">{restaurant.name}</h1>
