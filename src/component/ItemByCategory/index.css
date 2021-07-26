@@ -5,6 +5,9 @@
   flex-wrap: wrap;
   color: #2e3333;
   padding: 20px 0;
+  /* position: absolute; */
+
+  /* top: -20px; */
 }
 .itemByCategories {
   background-color: #f3f5f5;
@@ -15,18 +18,18 @@
   width: 96vw;
 }
 .cart {
-  display: flex;
-  /* aligne: right; */
+  /* display: flex; */
+  position: absolute;
   left: 75.5%;
   transform: translate(-50%, 0%);
   justify-self: flex-end;
-  /* grid-column-start: 2; */
   height: 190px;
   width: 350px;
+
+  border-radius: 5px;
+}
+.cartWrapper {
   position: -webkit-sticky;
   position: sticky;
   top: 20px;
-
-  border-radius: 5px;
-  /* z-index: 1000; */
 }

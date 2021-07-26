@@ -13,16 +13,18 @@ export default function ItemByCategory({ categories }) {
           borderColor: "orange",
         }}
       >
-        <p
-          style={{
-            borderWidth: 1,
-            borderStyle: "solid",
-            borderColor: "cyan",
-          }}
-          className="cart"
-        >
-          TON PANIER EST VIDES
-        </p>
+        <div className="cartWrapper">
+          <p
+            style={{
+              borderWidth: 1,
+              borderStyle: "solid",
+              borderColor: "cyan",
+            }}
+            className="cart"
+          >
+            TON PANIER EST VIDES
+          </p>
+        </div>
         {categories.map((catName) => {
           return (
             <>
@@ -45,16 +47,6 @@ export default function ItemByCategory({ categories }) {
             </>
           );
         })}
-        {/* <p
-          style={{
-            borderWidth: 10,
-            borderStyle: "solid",
-            borderColor: "cyan",
-          }}
-          className="cart"
-        >
-          TON PANIER EST VIDES
-        </p> */}
       </div>
     </>
   );
