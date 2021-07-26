@@ -1,8 +1,29 @@
 import "./index.css";
 import React from "react";
 import Meals from "../Meals";
+import Counter from "../Counter";
+import { useState, useEffect } from "react";
+
 export default function ItemByCategory({ categories }) {
-  console.log(categories, "cat");
+  const [orderList, setOrderList] = useState([]);
+  const [addCart, setAddCart] = useState("");
+  const [price, setPrice] = useState(0);
+  const [delivery] = useState(2.5);
+  const [count, setCount] = useState(1);
+  const [masterCounter, setMasterCounter] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleClickPlus = (index) => {
+    const newCounter = [...orderList];
+    newCounter[index].count += 1;
+    setOrderList(newCounter);
+  };
+  const handleClickMinus = (index) => {
+    const newCounter = [...orderList];
+    newCounter[index].count -= 1;
+    setOrderList(newCounter);
+  };
+
   return (
     <>
       <div
@@ -14,35 +35,71 @@ export default function ItemByCategory({ categories }) {
         }}
       >
         <div className="cartWrapper">
-          <p
-            style={{
-              borderWidth: 1,
-              borderStyle: "solid",
-              borderColor: "cyan",
-            }}
-            className="cart"
-          >
-            <input type="submit" disabled value="Valider mon panier" />
-            <span className="cartSpan">TON PANIER EST VIDE</span>
-          </p>
+          <div className="cart">
+            {orderList.length ? (
+              <>
+                <input type="submit" value="Valider mon panier" />
+                {orderList.map((item, index) => {
+                  console.log(item);
+                  // console.log(orderList[index]);
+                  // setPrice(count[index] * item.price[index]);
+                  return (
+                    <div key={item.id} className="cartAtributes">
+                      <p>
+                        <Counter
+                          count={item.count}
+                          index={index}
+                          handleClickPlus={handleClickPlus}
+                          handleClickMinus={handleClickMinus}
+                        />
+                        <span>{item.title}</span>
+                        <span>{item.price}</span>
+                      </p>
+                    </div>
+                  );
+                })}
+                <p>
+                  <span>---------------------------------</span>
+                </p>
+                <p>
+                  <span> Sous-Total {price} E</span>
+                </p>
+
+                <p>
+                  <span>Frais de livraison {delivery} E</span>
+                </p>
+                <p>
+                  <span>---------------------------------</span>
+                </p>
+                <p>
+                  <span>Total ---Sous-total + {delivery}</span>
+                </p>
+              </>
+            ) : (
+              <>
+                <input type="submit" disabled value="Valider mon panier" />
+                <span className="cartSpan">votre panier est vide</span>
+              </>
+            )}
+          </div>
         </div>
         {categories.map((catName) => {
           return (
             <>
               {catName.meals.length ? (
                 <>
-                  <h2
-                    className="catName wrapper"
-                    key={catName}
-                    // style={{
-                    //   borderWidth: 2,
-                    //   borderStyle: "solid",
-                    //   borderColor: "cyan",
-                    // }}
-                  >
+                  <h2 className="catName wrapper" key={catName}>
                     {catName.name}
                   </h2>
-                  <Meals meals={catName.meals} />
+                  <Meals
+                    meals={catName.meals}
+                    setAddCart={setAddCart}
+                    count={count}
+                    setPrice={setPrice}
+                    setCount={setCount}
+                    orderList={orderList}
+                    setOrderList={setOrderList}
+                  />
                 </>
               ) : null}
             </>
@@ -51,4 +108,35 @@ export default function ItemByCategory({ categories }) {
       </div>
     </>
   );
+}
+{
+  /* {addCart ? (
+              <>
+                <input type="submit" value="Valider mon panier" />
+                <p className="cartAtributes">
+                  <div>
+                    <input
+                      type="button"
+                      value="-"
+                      onClick={() => setMasterCounter(masterCounter - 1)}
+                    />
+                    <span> {masterCounter} </span>
+                    <input
+                      type="button"
+                      value="+"
+                      onClick={() => setMasterCounter(masterCounter + 1)}
+                    />
+                    <span>{addCart}</span>
+                    <span>{price}</span>
+                  </div>
+                  <div>
+                    <span> Sous-Total {masterCounter * price} E</span>
+                  </div>
+                  <div>
+                    <span>Frais de livraison {delivery} E</span>
+                  </div>
+                  <div>
+                    <span>Total ---{masterCounter * price + delivery}</span>
+                  </div>
+                </p> </> */
 }

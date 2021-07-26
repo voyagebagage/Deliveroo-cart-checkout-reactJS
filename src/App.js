@@ -25,10 +25,7 @@ function App() {
   }, []);
 
   return isLoading ? null : (
-    <div
-      // className="container"
-      style={{ borderWidth: 2, borderStyle: "solid", borderColor: "blue" }}
-    >
+    <div>
       <HeaderLogo />
       <HeaderRestaurant restaurant={data.restaurant} />
       <ItemByCategory categories={data.categories} />
