@@ -22,7 +22,8 @@ export default function ItemByCategory({ categories }) {
             }}
             className="cart"
           >
-            TON PANIER EST VIDES
+            <input type="submit" disabled value="Valider mon panier" />
+            <span className="cartSpan">TON PANIER EST VIDE</span>
           </p>
         </div>
         {categories.map((catName) => {

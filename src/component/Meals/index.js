@@ -31,7 +31,7 @@ export default function Meals({ meals }) {
                       icon="star"
                       style={{ marginLeft: 16, color: "orange", height: "75%" }}
                     />
-                    <span>Populaire</span>
+                    <span className="popular">Populaire</span>
                   </div>
                 )}
               </div>
