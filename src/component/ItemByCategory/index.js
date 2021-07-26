@@ -25,29 +25,21 @@ export default function ItemByCategory({ categories }) {
     const newCounter = [...orderList];
     newCounter[index].count -= 1;
     setSumPrice(sumPrice - newCounter[index].price);
+    if (newCounter[index].count === 0) newCounter.splice(index, 1);
+
     console.log(sumPrice, "sum----------------------");
     setOrderList(newCounter);
   };
 
   return (
     <>
-      <div
-        className="itemByCategories"
-        style={{
-          borderWidth: 10,
-          borderStyle: "solid",
-          borderColor: "orange",
-        }}
-      >
+      <div className="itemByCategories">
         <div className="cartWrapper">
           <div className="cart">
             {orderList.length ? (
               <>
                 <input type="submit" value="Valider mon panier" />
                 {orderList.map((item, index) => {
-                  console.log(item);
-                  // console.log(orderList[index]);
-                  // setPrice(count[index] * item.price[index]);
                   return (
                     <div key={item.id} className="cartAtributes">
                       <p>
@@ -114,35 +106,4 @@ export default function ItemByCategory({ categories }) {
       </div>
     </>
   );
-}
-{
-  /* {addCart ? (
-              <>
-                <input type="submit" value="Valider mon panier" />
-                <p className="cartAtributes">
-                  <div>
-                    <input
-                      type="button"
-                      value="-"
-                      onClick={() => setMasterCounter(masterCounter - 1)}
-                    />
-                    <span> {masterCounter} </span>
-                    <input
-                      type="button"
-                      value="+"
-                      onClick={() => setMasterCounter(masterCounter + 1)}
-                    />
-                    <span>{addCart}</span>
-                    <span>{price}</span>
-                  </div>
-                  <div>
-                    <span> Sous-Total {masterCounter * price} E</span>
-                  </div>
-                  <div>
-                    <span>Frais de livraison {delivery} E</span>
-                  </div>
-                  <div>
-                    <span>Total ---{masterCounter * price + delivery}</span>
-                  </div>
-                </p> </> */
 }

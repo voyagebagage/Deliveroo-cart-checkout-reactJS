@@ -14,13 +14,6 @@ export default function Meals({
   orderList,
   setOrderList,
 }) {
-  // console.log("-----------------MEALS--------------");
-  // console.table(meals);
-
-  // const handleClick = () => {
-
-  // }
-
   return (
     <>
       <div className="mealContainer wrapper">
@@ -36,7 +29,6 @@ export default function Meals({
                 count: 1,
                 title: meal.title,
                 price: Number(meal.price),
-                // delivery: 2.5,
               });
               setSumPrice(Number(meal.price) + sumPrice);
               setOrderList(newMenu);

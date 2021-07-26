@@ -5,17 +5,9 @@
   flex-wrap: wrap;
   color: #2e3333;
   padding: 20px 0;
-  /* position: absolute; */
-
-  /* top: -20px; */
 }
 .itemByCategories {
   background-color: #f3f5f5;
-}
-.wrapper {
-  margin: 0 auto;
-  max-width: 1200px;
-  width: 96vw;
 }
 .cart {
   padding: 10px;
