@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export default function ItemByCategory({ categories }) {
   const [orderList, setOrderList] = useState([]);
   const [addCart, setAddCart] = useState("");
-  const [price, setPrice] = useState(0);
+  const [sumPrice, setSumPrice] = useState(0);
   const [delivery] = useState(2.5);
   const [count, setCount] = useState(1);
   const [masterCounter, setMasterCounter] = useState(0);
@@ -16,11 +16,16 @@ export default function ItemByCategory({ categories }) {
   const handleClickPlus = (index) => {
     const newCounter = [...orderList];
     newCounter[index].count += 1;
+    console.log(typeof newCounter[index].price, "hanKLIKPLUS");
+    setSumPrice(sumPrice + newCounter[index].price);
+    console.log(sumPrice, "sum ++++++++++++++++++++");
     setOrderList(newCounter);
   };
-  const handleClickMinus = (index) => {
+  const handleClickMinus = (index, price) => {
     const newCounter = [...orderList];
     newCounter[index].count -= 1;
+    setSumPrice(sumPrice - newCounter[index].price);
+    console.log(sumPrice, "sum----------------------");
     setOrderList(newCounter);
   };
 
@@ -49,6 +54,7 @@ export default function ItemByCategory({ categories }) {
                         <Counter
                           count={item.count}
                           index={index}
+                          price={item.price}
                           handleClickPlus={handleClickPlus}
                           handleClickMinus={handleClickMinus}
                         />
@@ -62,7 +68,7 @@ export default function ItemByCategory({ categories }) {
                   <span>---------------------------------</span>
                 </p>
                 <p>
-                  <span> Sous-Total {price} E</span>
+                  <span> Sous-Total {sumPrice} E</span>
                 </p>
 
                 <p>
@@ -72,7 +78,7 @@ export default function ItemByCategory({ categories }) {
                   <span>---------------------------------</span>
                 </p>
                 <p>
-                  <span>Total ---Sous-total + {delivery}</span>
+                  <span>Total {sumPrice + delivery} E</span>
                 </p>
               </>
             ) : (
@@ -94,8 +100,8 @@ export default function ItemByCategory({ categories }) {
                   <Meals
                     meals={catName.meals}
                     setAddCart={setAddCart}
-                    count={count}
-                    setPrice={setPrice}
+                    sumPrice={sumPrice}
+                    setSumPrice={setSumPrice}
                     setCount={setCount}
                     orderList={orderList}
                     setOrderList={setOrderList}

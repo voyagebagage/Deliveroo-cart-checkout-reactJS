@@ -9,8 +9,8 @@ export default function Meals({
   meals,
   setAddCart,
   count,
-  setCount,
-  setPrice,
+  sumPrice,
+  setSumPrice,
   orderList,
   setOrderList,
 }) {
@@ -23,35 +23,26 @@ export default function Meals({
 
   return (
     <>
-      <div
-        className="mealContainer wrapper"
-        // style={{
-        //   borderWidth: 2,
-        //   borderStyle: "solid",
-        //   borderColor: "green",
-        // }}
-      >
+      <div className="mealContainer wrapper">
         {meals.map((meal, index) => (
           <div
             className="meal"
             key={meal.id}
             onClick={() => {
-              // setAddCart(meal.title);
-              // setPrice(meal.price);
-              // setMasterCounter(masterCounter + 1);
               const newMenu = [...orderList];
               // if (meal.id !== meal.id[index]) {
               newMenu.push({
                 id: meal.id,
                 count: 1,
                 title: meal.title,
-                price: meal.price,
+                price: Number(meal.price),
                 // delivery: 2.5,
               });
+              setSumPrice(Number(meal.price) + sumPrice);
               setOrderList(newMenu);
               // }
-
-              console.log(newMenu);
+              console.log(typeof meal.price);
+              console.log(sumPrice, "sum MEAL------");
             }}
           >
             <div className={meal.picture ? "leftColumnMeals" : null}>

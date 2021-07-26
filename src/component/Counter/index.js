@@ -1,6 +1,7 @@
 export default function Counter({
   count,
   index,
+  price,
   handleClickMinus,
   handleClickPlus,
 }) {
