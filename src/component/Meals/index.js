@@ -7,8 +7,6 @@ library.add(faStar);
 
 export default function Meals({
   meals,
-  setAddCart,
-  count,
   sumPrice,
   setSumPrice,
   orderList,
@@ -23,7 +21,6 @@ export default function Meals({
             key={meal.id}
             onClick={() => {
               const newMenu = [...orderList];
-              // if (meal.id !== meal.id[index]) {
               newMenu.push({
                 id: meal.id,
                 count: 1,
@@ -32,9 +29,6 @@ export default function Meals({
               });
               setSumPrice(Number(meal.price) + sumPrice);
               setOrderList(newMenu);
-              // }
-              console.log(typeof meal.price);
-              console.log(sumPrice, "sum MEAL------");
             }}
           >
             <div className={meal.picture ? "leftColumnMeals" : null}>
@@ -44,10 +38,7 @@ export default function Meals({
                 <div>{meal.price} €</div>
                 {meal.popular && (
                   <div>
-                    <FontAwesomeIcon
-                      icon="star"
-                      style={{ marginLeft: 16, color: "orange", height: "75%" }}
-                    />
+                    <FontAwesomeIcon icon="star" className="starIcon" />
                     <span className="popular">Populaire</span>
                   </div>
                 )}

@@ -55,3 +55,8 @@
   width: 100%;
   object-fit: cover;
 }
+.starIcon {
+  margin-left: 16px;
+  color: rgb(255, 136, 0);
+  height: "75%";
+}

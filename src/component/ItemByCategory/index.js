@@ -6,19 +6,14 @@ import { useState, useEffect } from "react";
 
 export default function ItemByCategory({ categories }) {
   const [orderList, setOrderList] = useState([]);
-  const [addCart, setAddCart] = useState("");
   const [sumPrice, setSumPrice] = useState(0);
   const [delivery] = useState(2.5);
   const [count, setCount] = useState(1);
-  const [masterCounter, setMasterCounter] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   const handleClickPlus = (index) => {
     const newCounter = [...orderList];
     newCounter[index].count += 1;
-    console.log(typeof newCounter[index].price, "hanKLIKPLUS");
     setSumPrice(sumPrice + newCounter[index].price);
-    console.log(sumPrice, "sum ++++++++++++++++++++");
     setOrderList(newCounter);
   };
   const handleClickMinus = (index, price) => {
@@ -26,8 +21,6 @@ export default function ItemByCategory({ categories }) {
     newCounter[index].count -= 1;
     setSumPrice(sumPrice - newCounter[index].price);
     if (newCounter[index].count === 0) newCounter.splice(index, 1);
-
-    console.log(sumPrice, "sum----------------------");
     setOrderList(newCounter);
   };
 
@@ -35,14 +28,17 @@ export default function ItemByCategory({ categories }) {
     <>
       <div className="itemByCategories">
         <div className="cartWrapper">
-          <div className="cart">
+          <div
+            className="cart"
+            style={orderList.length ? null : { height: 190 }}
+          >
             {orderList.length ? (
               <>
-                <input type="submit" value="Valider mon panier" />
+                <input id="active" type="submit" value="Valider mon panier" />
                 {orderList.map((item, index) => {
                   return (
-                    <div key={item.id} className="cartAtributes">
-                      <p>
+                    <p key={item.id} className="cartAtributes">
+                      <span>
                         <Counter
                           count={item.count}
                           index={index}
@@ -50,27 +46,39 @@ export default function ItemByCategory({ categories }) {
                           handleClickPlus={handleClickPlus}
                           handleClickMinus={handleClickMinus}
                         />
-                        <span>{item.title}</span>
-                        <span>{item.price}</span>
-                      </p>
-                    </div>
+                      </span>
+                      <span>{item.title}</span>
+                      <span> {item.price} €</span>
+                    </p>
                   );
                 })}
                 <p>
-                  <span>---------------------------------</span>
+                  <span>_________________________________________________</span>
                 </p>
                 <p>
-                  <span> Sous-Total {sumPrice} E</span>
+                  <span>
+                    Sous-Total
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {sumPrice.toFixed(2)} €
+                  </span>
                 </p>
 
                 <p>
-                  <span>Frais de livraison {delivery} E</span>
+                  <span>
+                    Frais de livraison
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {delivery} €
+                  </span>
                 </p>
                 <p>
-                  <span>---------------------------------</span>
+                  <span>_________________________________________________</span>
                 </p>
                 <p>
-                  <span>Total {sumPrice + delivery} E</span>
+                  <span className="total">
+                    Total
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {(sumPrice + delivery).toFixed(2)} €
+                  </span>
                 </p>
               </>
             ) : (
@@ -91,10 +99,8 @@ export default function ItemByCategory({ categories }) {
                   </h2>
                   <Meals
                     meals={catName.meals}
-                    setAddCart={setAddCart}
                     sumPrice={sumPrice}
                     setSumPrice={setSumPrice}
-                    setCount={setCount}
                     orderList={orderList}
                     setOrderList={setOrderList}
                   />
