@@ -16,7 +16,7 @@ export default function ItemByCategory({ categories }) {
     setSumPrice(sumPrice + newCounter[index].price);
     setOrderList(newCounter);
   };
-  const handleClickMinus = (index, price) => {
+  const handleClickMinus = (index) => {
     const newCounter = [...orderList];
     newCounter[index].count -= 1;
     setSumPrice(sumPrice - newCounter[index].price);
@@ -55,30 +55,21 @@ export default function ItemByCategory({ categories }) {
                 <p>
                   <span>_________________________________________________</span>
                 </p>
-                <p>
-                  <span>
-                    Sous-Total
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {sumPrice.toFixed(2)} €
-                  </span>
+                <p className="cartWrapPrice">
+                  <span>Sous-Total</span>
+                  <span className="cartPrice"> {sumPrice.toFixed(2)} €</span>
                 </p>
 
-                <p>
-                  <span>
-                    Frais de livraison
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {delivery} €
-                  </span>
-                </p>
+                <div className="cartWrapPrice">
+                  <span>Frais de livraison</span>
+                  <span className="cartPrice"> {delivery} €</span>
+                </div>
                 <p>
                   <span>_________________________________________________</span>
                 </p>
-                <p>
-                  <span className="total">
-                    Total
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {(sumPrice + delivery).toFixed(2)} €
-                  </span>
+                <p className="total">
+                  <span> Total</span>
+                  <span> {(sumPrice + delivery).toFixed(2)} €</span>
                 </p>
               </>
             ) : (

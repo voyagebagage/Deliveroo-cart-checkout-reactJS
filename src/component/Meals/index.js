@@ -12,24 +12,34 @@ export default function Meals({
   orderList,
   setOrderList,
 }) {
+  const handleClickMeal = (meal) => {
+    const newMenu = [...orderList];
+    const alreadyInCart = newMenu.find((elem) => elem.id === meal.id);
+    setSumPrice(Number(meal.price) + sumPrice);
+
+    if (alreadyInCart) {
+      alreadyInCart.count++;
+      setOrderList(newMenu);
+    }
+    if (!alreadyInCart) {
+      newMenu.push({
+        id: meal.id,
+        count: 1,
+        title: meal.title,
+        price: Number(meal.price),
+      });
+      setOrderList(newMenu);
+    }
+  };
+
   return (
     <>
       <div className="mealContainer wrapper">
-        {meals.map((meal, index) => (
+        {meals.map((meal) => (
           <div
             className="meal"
             key={meal.id}
-            onClick={() => {
-              const newMenu = [...orderList];
-              newMenu.push({
-                id: meal.id,
-                count: 1,
-                title: meal.title,
-                price: Number(meal.price),
-              });
-              setSumPrice(Number(meal.price) + sumPrice);
-              setOrderList(newMenu);
-            }}
+            onClick={() => handleClickMeal(meal)}
           >
             <div className={meal.picture ? "leftColumnMeals" : null}>
               <h3 className="mealTitle">{meal.title}</h3>
